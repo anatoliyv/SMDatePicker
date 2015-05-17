@@ -1,18 +1,18 @@
 # SMDatePicker
 
-Customisable UIDatePicker with UIToolbar. With this class you can easily extend UIDatePicker options. Take a look at preview:
+Customisable UIDatePicker with UIToolbar. Easy to setup, use and customize. Take a look at preview:
 
 ![Preview](https://raw.githubusercontent.com/anatoliyv/SMDatePicker/master/Main/SMDatePicker.gif)
 
-### How to install
+### Installation
 
-This repo has example project, but if you want to include SMDatePicker you need only one file. Use CocoaPods to install:
+This repo has example project, but if you want to include SMDatePicker you need only one file **SMDatePicker.swift**. Alternatively you can use CocoaPods to install:
 
 ```
 pod 'SMDatePicker'
 ```
 
-### How to use
+### Usage
 
 Usage is as simple as possible. Here is an swift example:
 
@@ -77,3 +77,27 @@ And finaly show picker in your view:
 ```
 picker.showPickerInView(view, animated: true)
 ```
+
+### License
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Anatoliy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
