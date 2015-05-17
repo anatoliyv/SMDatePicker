@@ -37,7 +37,7 @@ datePickerWillDisappear(picker: SMDatePicker)
 datePickerDidDisappear(picker: SMDatePicker)
 ```
 
-Now you can customizae picker to support your design:
+Now you can customize picker to support your design:
 
 ```
 // Customize background colors
@@ -58,7 +58,7 @@ picker.leftButtons = [ UIBarButtonItem(customView: buttonOne) ]
 picker.rightButtons = [ UIBarButtonItem(customView: buttonTwo) , UIBarButtonItem(customView: buttonThree) ]
 ```
 
-Where toolbarButton is a method:
+Where toolbarButton(...) is a method:
 
 ```
 private func toolbarButton(title: String) -> UIButton {
@@ -72,7 +72,7 @@ private func toolbarButton(title: String) -> UIButton {
 }
 ```
 
-And finaly show picker:
+And finaly show picker in your view:
 
 ```
 picker.showPickerInView(view, animated: true)
