@@ -27,6 +27,9 @@ class ViewController: UIViewController, SMDatePickerDelegate {
         
         view.backgroundColor = UIColor.purpleColor().colorWithAlphaComponent(0.8)
         
+        // you can set timeZone
+//        picker.timeZone = NSTimeZone(abbreviation: "UTC")
+        
         button.addTarget(self, action: Selector("button:"), forControlEvents: UIControlEvents.TouchUpInside)
         addButton(button)
         

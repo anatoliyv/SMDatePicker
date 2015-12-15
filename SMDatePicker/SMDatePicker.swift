@@ -39,6 +39,13 @@ import UIKit
         didSet { picker.datePickerMode = pickerMode }
     }
     
+    /** You can set up a time zone for the picker. */
+    public var timeZone: NSTimeZone? {
+        didSet {
+            picker.timeZone = timeZone
+        }
+    }
+    
     /** You can set up different color for picker and toolbar. */
     public var toolbarBackgroundColor: UIColor? {
         didSet {
