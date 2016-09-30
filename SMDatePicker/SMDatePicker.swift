@@ -57,6 +57,26 @@ import UIKit
         didSet { picker.date = pickerDate }
     }
     
+    /** Minimum date selectable */
+    public var minimumDate: NSDate? {
+        set {
+            picker.minimumDate = newValue
+        }
+        get {
+            return picker.minimumDate
+        }
+    }
+    
+    /** Maximum date selectable */
+    public var maximumDate: NSDate? {
+        set {
+            picker.maximumDate = newValue
+        }
+        get {
+            return picker.maximumDate
+        }
+    }
+    
     /** Array of UIBarButtonItem's that will be placed on left side of UIToolbar. By default it has only 'Cancel' bytton. */
     public var leftButtons: [UIBarButtonItem] = []
     
