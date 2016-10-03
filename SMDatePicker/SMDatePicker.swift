@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol SMDatePickerDelegate {
+@objc public protocol SMDatePickerDelegate: class {
     
     optional func datePickerWillAppear(picker: SMDatePicker)
     optional func datePickerDidAppear(picker: SMDatePicker)
@@ -24,7 +24,7 @@ import UIKit
 @objc public class SMDatePicker: UIView {
     
     /** Picker's delegate that conforms to SMDatePickerDelegate protocol */
-    public var delegate: SMDatePickerDelegate?
+    public weak var delegate: SMDatePickerDelegate?
     
     /** UIToolbar title */
     public var title: String?
