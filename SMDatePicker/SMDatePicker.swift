@@ -57,6 +57,15 @@ import UIKit
         didSet { picker.date = pickerDate }
     }
     
+    public var minuteInterval: Int {
+        set {
+            picker.minuteInterval = newValue
+        }
+        get {
+            return picker.minuteInterval
+        }
+    }
+    
     /** Minimum date selectable */
     public var minimumDate: NSDate? {
         set {
