@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol SMDatePickerDelegate {
+@objc public protocol SMDatePickerDelegate: class {
     
     optional func datePickerWillAppear(picker: SMDatePicker)
     optional func datePickerDidAppear(picker: SMDatePicker)
@@ -24,7 +24,7 @@ import UIKit
 @objc public class SMDatePicker: UIView {
     
     /** Picker's delegate that conforms to SMDatePickerDelegate protocol */
-    public var delegate: SMDatePickerDelegate?
+    public weak var delegate: SMDatePickerDelegate?
     
     /** UIToolbar title */
     public var title: String?
@@ -55,6 +55,35 @@ import UIKit
     /** Initial picker's date */
     public var pickerDate: NSDate = NSDate() {
         didSet { picker.date = pickerDate }
+    }
+    
+    public var minuteInterval: Int {
+        set {
+            picker.minuteInterval = newValue
+        }
+        get {
+            return picker.minuteInterval
+        }
+    }
+    
+    /** Minimum date selectable */
+    public var minimumDate: NSDate? {
+        set {
+            picker.minimumDate = newValue
+        }
+        get {
+            return picker.minimumDate
+        }
+    }
+    
+    /** Maximum date selectable */
+    public var maximumDate: NSDate? {
+        set {
+            picker.maximumDate = newValue
+        }
+        get {
+            return picker.maximumDate
+        }
     }
     
     /** Array of UIBarButtonItem's that will be placed on left side of UIToolbar. By default it has only 'Cancel' bytton. */
