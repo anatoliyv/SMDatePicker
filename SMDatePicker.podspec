@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SMDatePicker"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "UIDatePicker with customisable UIToolbar"
 
   s.description  = <<-DESC
@@ -73,7 +73,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/anatoliyv/SMDatePicker.git", :tag => "v.0.0.3" }
+  s.source       = { :git => "https://github.com/anatoliyv/SMDatePicker.git", :tag => "v.0.0.4" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
