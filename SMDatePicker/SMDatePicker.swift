@@ -23,23 +23,23 @@ import UIKit
 
 @objc open class SMDatePicker: UIView {
     
-    /** Picker's delegate that conforms to SMDatePickerDelegate protocol */
+    /// Picker's delegate that conforms to SMDatePickerDelegate protocol
     open weak var delegate: SMDatePickerDelegate?
     
-    /** UIToolbar title */
+    /// UIToolbar title
     open var title: String?
     open var titleFont: UIFont = UIFont.systemFont(ofSize: 13)
     open var titleColor: UIColor = UIColor.gray
     
-    /** You can define your own toolbar height. By default it's 44 pixels. */
+    /// You can define your own toolbar height. By default it's 44 pixels.
     open var toolbarHeight: CGFloat = 44.0
     
-    /** Specify different UIDatePicker mode. By default it's UIDatePickerMode.DateAndTime */
+    /// Specify different UIDatePicker mode. By default it's UIDatePickerMode.DateAndTime
     open var pickerMode: UIDatePickerMode = UIDatePickerMode.dateAndTime {
         didSet { picker.datePickerMode = pickerMode }
     }
     
-    /** You can set up different color for picker and toolbar. */
+    /// You can set up different color for picker and toolbar.
     open var toolbarBackgroundColor: UIColor? {
         didSet {
             toolbar.backgroundColor = toolbarBackgroundColor
@@ -47,12 +47,12 @@ import UIKit
         }
     }
     
-    /** You can set up different color for picker and toolbar. */
+    /// You can set up different color for picker and toolbar.
     open var pickerBackgroundColor: UIColor? {
         didSet { picker.backgroundColor = pickerBackgroundColor }
     }
     
-    /** Initial picker's date */
+    /// Initial picker's date
     open var pickerDate: Date = Date() {
         didSet { picker.date = pickerDate }
     }
@@ -66,7 +66,7 @@ import UIKit
         }
     }
     
-    /** Minimum date selectable */
+    /// Minimum date selectable
     open var minimumDate: Date? {
         set {
             picker.minimumDate = newValue
@@ -76,7 +76,7 @@ import UIKit
         }
     }
     
-    /** Maximum date selectable */
+    /// Maximum date selectable
     open var maximumDate: Date? {
         set {
             picker.maximumDate = newValue
@@ -86,10 +86,10 @@ import UIKit
         }
     }
     
-    /** Array of UIBarButtonItem's that will be placed on left side of UIToolbar. By default it has only 'Cancel' bytton. */
+    /// Array of UIBarButtonItem's that will be placed on left side of UIToolbar. By default it has only 'Cancel' bytton.
     open var leftButtons: [UIBarButtonItem] = []
     
-    /** Array of UIBarButtonItem's that will be placed on right side of UIToolbar. By default it has only 'Done' bytton. */
+    /// Array of UIBarButtonItem's that will be placed on right side of UIToolbar. By default it has only 'Done' bytton.
     open var rightButtons: [UIBarButtonItem] = []
     
     // Privates
@@ -198,13 +198,10 @@ import UIKit
     
     // MARK: Showing and hiding picker
     
-    /**
-    Shows picker in view with animation if it's required.
-    
-    - parameter view: is a UIView where we want to show our picker
-    - parameter animated: will show with animation if it's true
-    
-    */
+    /// Shows picker in view with animation if it's required.
+    ///
+    /// - Parameter view: is a UIView where we want to show our picker
+    /// - Parameter animated: will show with animation if it's true
     open func showPickerInView(_ view: UIView, animated: Bool) {
         toolbar.items = toolbarItems()
         
@@ -219,11 +216,9 @@ import UIKit
         showPickerAnimation(animated)
     }
     
-    /**
-    Hide visible picker anikmated. 
-
-    - parameter animated: will hide with animation if `true`
-    */
+    /// Hide visible picker animated.
+    ///
+    /// - Parameter animated: will hide with animation if `true`
     open func hidePicker(_ animated: Bool) {
         hidePickerAnimation(true)
     }
@@ -263,22 +258,17 @@ import UIKit
     
     // MARK: Actions
     
-    /**
-    Default Done action for picker. It will hide picker with animation and call's delegate datePicker(:didPickDate) method.
-    */
+    /// Default Done action for picker. It will hide picker with animation and call's delegate datePicker(:didPickDate) method.
     open func pressedDone(_ sender: AnyObject) {
         hidePickerAnimation(true)
         
         delegate?.datePicker?(self, didPickDate: picker.date)
     }
     
-    /**
-    Default Cancel actions for picker.
-    */
+    /// Default Cancel actions for picker.
     open func pressedCancel(_ sender: AnyObject) {
         hidePickerAnimation(true)
         
         delegate?.datePickerDidCancel?(self)
     }
-
 }
