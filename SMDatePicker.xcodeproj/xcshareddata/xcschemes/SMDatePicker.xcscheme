@@ -20,20 +20,6 @@
                ReferencedContainer = "container:SMDatePicker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "18477F911B07849E00690453"
-               BuildableName = "SMDatePickerTests.xctest"
-               BlueprintName = "SMDatePickerTests"
-               ReferencedContainer = "container:SMDatePicker.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,16 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "18477F911B07849E00690453"
-               BuildableName = "SMDatePickerTests.xctest"
-               BlueprintName = "SMDatePickerTests"
-               ReferencedContainer = "container:SMDatePicker.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
