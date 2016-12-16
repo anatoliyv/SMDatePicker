@@ -10,49 +10,49 @@ import UIKit
 
 class ViewController: UIViewController, SMDatePickerDelegate {
     
-    private var yPosition: CGFloat = 50.0
-    private var activePicker: SMDatePicker?
+    fileprivate var yPosition: CGFloat = 50.0
+    fileprivate var activePicker: SMDatePicker?
     
-    private var picker: SMDatePicker = SMDatePicker()
-    private var button: UIButton = ViewController.cusomButton("Default picker")
+    fileprivate var picker: SMDatePicker = SMDatePicker()
+    fileprivate var button: UIButton = ViewController.cusomButton("Default picker")
     
-    private var pickerColor: SMDatePicker = SMDatePicker()
-    private var buttonColor: UIButton = ViewController.cusomButton("Custom colors")
+    fileprivate var pickerColor: SMDatePicker = SMDatePicker()
+    fileprivate var buttonColor: UIButton = ViewController.cusomButton("Custom colors")
     
-    private var pickerToolbar: SMDatePicker = SMDatePicker()
-    private var buttonToolbar: UIButton = ViewController.cusomButton("Toolbar customization")
+    fileprivate var pickerToolbar: SMDatePicker = SMDatePicker()
+    fileprivate var buttonToolbar: UIButton = ViewController.cusomButton("Toolbar customization")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.purpleColor().colorWithAlphaComponent(0.8)
+        view.backgroundColor = UIColor.purple.withAlphaComponent(0.8)
         
-        button.addTarget(self, action: #selector(ViewController.button(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(ViewController.button(_:)), for: UIControlEvents.touchUpInside)
         addButton(button)
         
-        buttonColor.addTarget(self, action: #selector(ViewController.buttonColor(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        buttonColor.addTarget(self, action: #selector(ViewController.buttonColor(_:)), for: UIControlEvents.touchUpInside)
         addButton(buttonColor)
         
-        buttonToolbar.addTarget(self, action: #selector(ViewController.buttonToolbar(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        buttonToolbar.addTarget(self, action: #selector(ViewController.buttonToolbar(_:)), for: UIControlEvents.touchUpInside)
         addButton(buttonToolbar)
     }
     
-    private func addButton(button: UIButton) {
+    fileprivate func addButton(_ button: UIButton) {
         button.sizeToFit()
-        button.frame.size = CGSizeMake(self.view.frame.size.width * 0.8, button.frame.height)
+        button.frame.size = CGSize(width: self.view.frame.size.width * 0.8, height: button.frame.height)
         
         let xPosition = (view.frame.size.width - button.frame.width) / 2
-        button.frame.origin = CGPointMake(xPosition, yPosition)
+        button.frame.origin = CGPoint(x: xPosition, y: yPosition)
         
         view.addSubview(button)
         
         yPosition += button.frame.height * 1.3
     }
     
-    class func cusomButton(title: String) -> UIButton {
-        let button = UIButton(type: UIButtonType.Custom)
-        button.setTitle(title, forState: UIControlState.Normal)
-        button.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.4)
+    class func cusomButton(_ title: String) -> UIButton {
+        let button = UIButton(type: UIButtonType.custom)
+        button.setTitle(title, for: UIControlState())
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         button.layer.cornerRadius = 10
         
         return button
@@ -60,7 +60,7 @@ class ViewController: UIViewController, SMDatePickerDelegate {
     
     // MARK: Actions
 
-    func button(sender: UIButton) {
+    func button(_ sender: UIButton) {
         activePicker?.hidePicker(true)
         picker.showPickerInView(view, animated: true)
         picker.delegate = self
@@ -68,24 +68,24 @@ class ViewController: UIViewController, SMDatePickerDelegate {
         activePicker = picker
     }
     
-    func buttonColor(sender: UIButton) {
+    func buttonColor(_ sender: UIButton) {
         activePicker?.hidePicker(true)
         
-        pickerColor.toolbarBackgroundColor = UIColor.grayColor()
-        pickerColor.pickerBackgroundColor = UIColor.lightGrayColor()
+        pickerColor.toolbarBackgroundColor = UIColor.gray
+        pickerColor.pickerBackgroundColor = UIColor.lightGray
         pickerColor.showPickerInView(view, animated: true)
         pickerColor.delegate = self
         
         activePicker = pickerColor
     }
     
-    func buttonToolbar(sender: UIButton) {
+    func buttonToolbar(_ sender: UIButton) {
         activePicker?.hidePicker(true)
         
-        pickerToolbar.toolbarBackgroundColor = UIColor.grayColor()
+        pickerToolbar.toolbarBackgroundColor = UIColor.gray
         pickerToolbar.title = "Customized"
-        pickerToolbar.titleFont = UIFont.systemFontOfSize(16)
-        pickerToolbar.titleColor = UIColor.whiteColor()
+        pickerToolbar.titleFont = UIFont.systemFont(ofSize: 16)
+        pickerToolbar.titleColor = UIColor.white
         pickerToolbar.delegate = self
         
         let buttonOne = toolbarButton("One")
@@ -100,11 +100,11 @@ class ViewController: UIViewController, SMDatePickerDelegate {
         activePicker = pickerToolbar
     }
     
-    private func toolbarButton(title: String) -> UIButton {
-        let button = UIButton(type: UIButtonType.Custom)
-        button.setTitle(title, forState: UIControlState.Normal)
-        button.frame = CGRectMake(0, 0, 70, 32)
-        button.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.4)
+    fileprivate func toolbarButton(_ title: String) -> UIButton {
+        let button = UIButton(type: UIButtonType.custom)
+        button.setTitle(title, for: UIControlState())
+        button.frame = CGRect(x: 0, y: 0, width: 70, height: 32)
+        button.backgroundColor = UIColor.red.withAlphaComponent(0.4)
         button.layer.cornerRadius = 5.0
         
         return button
@@ -112,23 +112,23 @@ class ViewController: UIViewController, SMDatePickerDelegate {
     
     // MARK: SMDatePickerDelegate
     
-    func datePicker(picker: SMDatePicker, didPickDate date: NSDate) {
+    func datePicker(_ picker: SMDatePicker, didPickDate date: Date) {
         if picker == self.picker {
-            button.setTitle(date.description, forState: UIControlState.Normal)
+            button.setTitle(date.description, for: UIControlState())
         } else if picker == self.pickerColor {
-            buttonColor.setTitle(date.description, forState: UIControlState.Normal)
+            buttonColor.setTitle(date.description, for: UIControlState())
         } else if picker == self.pickerToolbar {
-            buttonToolbar.setTitle(date.description, forState: UIControlState.Normal)
+            buttonToolbar.setTitle(date.description, for: UIControlState())
         }
     }
     
-    func datePickerDidCancel(picker: SMDatePicker) {
+    func datePickerDidCancel(_ picker: SMDatePicker) {
         if picker == self.picker {
-            button.setTitle("Default picker", forState: UIControlState.Normal)
+            button.setTitle("Default picker", for: UIControlState())
         } else if picker == self.pickerColor {
-            buttonColor.setTitle("Custom colors", forState: UIControlState.Normal)
+            buttonColor.setTitle("Custom colors", for: UIControlState())
         } else if picker == self.pickerToolbar {
-            buttonToolbar.setTitle("Toolbar customization", forState: UIControlState.Normal)
+            buttonToolbar.setTitle("Toolbar customization", for: UIControlState())
         }
     }
 

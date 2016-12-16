@@ -10,37 +10,37 @@ import UIKit
 
 @objc public protocol SMDatePickerDelegate: class {
     
-    optional func datePickerWillAppear(picker: SMDatePicker)
-    optional func datePickerDidAppear(picker: SMDatePicker)
+    @objc optional func datePickerWillAppear(_ picker: SMDatePicker)
+    @objc optional func datePickerDidAppear(_ picker: SMDatePicker)
     
-    optional func datePicker(picker: SMDatePicker, didPickDate date: NSDate)
-    optional func datePickerDidCancel(picker: SMDatePicker)
+    @objc optional func datePicker(_ picker: SMDatePicker, didPickDate date: Date)
+    @objc optional func datePickerDidCancel(_ picker: SMDatePicker)
     
-    optional func datePickerWillDisappear(picker: SMDatePicker)
-    optional func datePickerDidDisappear(picker: SMDatePicker)
+    @objc optional func datePickerWillDisappear(_ picker: SMDatePicker)
+    @objc optional func datePickerDidDisappear(_ picker: SMDatePicker)
     
 }
 
-@objc public class SMDatePicker: UIView {
+@objc open class SMDatePicker: UIView {
     
     /** Picker's delegate that conforms to SMDatePickerDelegate protocol */
-    public weak var delegate: SMDatePickerDelegate?
+    open weak var delegate: SMDatePickerDelegate?
     
     /** UIToolbar title */
-    public var title: String?
-    public var titleFont: UIFont = UIFont.systemFontOfSize(13)
-    public var titleColor: UIColor = UIColor.grayColor()
+    open var title: String?
+    open var titleFont: UIFont = UIFont.systemFont(ofSize: 13)
+    open var titleColor: UIColor = UIColor.gray
     
     /** You can define your own toolbar height. By default it's 44 pixels. */
-    public var toolbarHeight: CGFloat = 44.0
+    open var toolbarHeight: CGFloat = 44.0
     
     /** Specify different UIDatePicker mode. By default it's UIDatePickerMode.DateAndTime */
-    public var pickerMode: UIDatePickerMode = UIDatePickerMode.DateAndTime {
+    open var pickerMode: UIDatePickerMode = UIDatePickerMode.dateAndTime {
         didSet { picker.datePickerMode = pickerMode }
     }
     
     /** You can set up different color for picker and toolbar. */
-    public var toolbarBackgroundColor: UIColor? {
+    open var toolbarBackgroundColor: UIColor? {
         didSet {
             toolbar.backgroundColor = toolbarBackgroundColor
             toolbar.barTintColor = toolbarBackgroundColor
@@ -48,16 +48,16 @@ import UIKit
     }
     
     /** You can set up different color for picker and toolbar. */
-    public var pickerBackgroundColor: UIColor? {
+    open var pickerBackgroundColor: UIColor? {
         didSet { picker.backgroundColor = pickerBackgroundColor }
     }
     
     /** Initial picker's date */
-    public var pickerDate: NSDate = NSDate() {
+    open var pickerDate: Date = Date() {
         didSet { picker.date = pickerDate }
     }
     
-    public var minuteInterval: Int {
+    open var minuteInterval: Int {
         set {
             picker.minuteInterval = newValue
         }
@@ -67,7 +67,7 @@ import UIKit
     }
     
     /** Minimum date selectable */
-    public var minimumDate: NSDate? {
+    open var minimumDate: Date? {
         set {
             picker.minimumDate = newValue
         }
@@ -77,7 +77,7 @@ import UIKit
     }
     
     /** Maximum date selectable */
-    public var maximumDate: NSDate? {
+    open var maximumDate: Date? {
         set {
             picker.maximumDate = newValue
         }
@@ -87,20 +87,20 @@ import UIKit
     }
     
     /** Array of UIBarButtonItem's that will be placed on left side of UIToolbar. By default it has only 'Cancel' bytton. */
-    public var leftButtons: [UIBarButtonItem] = []
+    open var leftButtons: [UIBarButtonItem] = []
     
     /** Array of UIBarButtonItem's that will be placed on right side of UIToolbar. By default it has only 'Done' bytton. */
-    public var rightButtons: [UIBarButtonItem] = []
+    open var rightButtons: [UIBarButtonItem] = []
     
     // Privates
     
-    private var toolbar: UIToolbar = UIToolbar()
-    private var picker: UIDatePicker = UIDatePicker()
+    fileprivate var toolbar: UIToolbar = UIToolbar()
+    fileprivate var picker: UIDatePicker = UIDatePicker()
     
     // MARK: Lifecycle
     
     public override init(frame: CGRect) {
-        super.init(frame: CGRectZero)
+        super.init(frame: CGRect.zero)
         
         addSubview(picker)
         addSubview(toolbar)
@@ -121,14 +121,14 @@ import UIKit
     
     // MARK: Customization
     
-    private func setupDefaultButtons() {
+    fileprivate func setupDefaultButtons() {
         let doneButton = UIBarButtonItem(title: "Done",
-            style: UIBarButtonItemStyle.Plain,
+            style: UIBarButtonItemStyle.plain,
             target: self,
             action: #selector(SMDatePicker.pressedDone(_:)))
 
         let cancelButton = UIBarButtonItem(title: "Cancel",
-            style: UIBarButtonItemStyle.Plain,
+            style: UIBarButtonItemStyle.plain,
             target: self,
             action: #selector(SMDatePicker.pressedCancel(_:)))
         
@@ -136,11 +136,11 @@ import UIKit
         rightButtons = [ doneButton ]
     }
     
-    private func customize() {
-        toolbar.barStyle = UIBarStyle.BlackTranslucent
-        toolbar.translucent = false
+    fileprivate func customize() {
+        toolbar.barStyle = UIBarStyle.blackTranslucent
+        toolbar.isTranslucent = false
         
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
         
         if let toolbarBackgroundColor = toolbarBackgroundColor {
             toolbar.backgroundColor = toolbarBackgroundColor
@@ -155,7 +155,7 @@ import UIKit
         }
     }
     
-    private func toolbarItems() -> [UIBarButtonItem] {
+    fileprivate func toolbarItems() -> [UIBarButtonItem] {
         var items: [UIBarButtonItem] = []
         
         for button in leftButtons {
@@ -163,15 +163,15 @@ import UIKit
         }
         
         if let title = toolbarTitle() {
-            let spaceLeft = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-            let spaceRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            let spaceLeft = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+            let spaceRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
             let titleItem = UIBarButtonItem(customView: title)
             
             items.append(spaceLeft)
             items.append(titleItem)
             items.append(spaceRight)
         } else {
-            let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
             items.append(space)
         }
         
@@ -182,7 +182,7 @@ import UIKit
         return items
     }
     
-    private func toolbarTitle() -> UILabel? {
+    fileprivate func toolbarTitle() -> UILabel? {
         if let title = title {
             let label = UILabel()
             label.text = title
@@ -205,13 +205,13 @@ import UIKit
     - parameter animated: will show with animation if it's true
     
     */
-    public func showPickerInView(view: UIView, animated: Bool) {
+    open func showPickerInView(_ view: UIView, animated: Bool) {
         toolbar.items = toolbarItems()
         
-        toolbar.frame = CGRectMake(0, 0, view.frame.size.width, toolbarHeight)
-        picker.frame = CGRectMake(0, toolbarHeight, view.frame.size.width, picker.frame.size.height)
-        self.frame = CGRectMake(0, view.frame.size.height - picker.frame.size.height - toolbar.frame.size.height,
-            view.frame.size.width, picker.frame.size.height + toolbar.frame.size.height)
+        toolbar.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: toolbarHeight)
+        picker.frame = CGRect(x: 0, y: toolbarHeight, width: view.frame.size.width, height: picker.frame.size.height)
+        self.frame = CGRect(x: 0, y: view.frame.size.height - picker.frame.size.height - toolbar.frame.size.height,
+            width: view.frame.size.width, height: picker.frame.size.height + toolbar.frame.size.height)
 
         view.addSubview(self)
         becomeFirstResponder()
@@ -224,38 +224,38 @@ import UIKit
 
     - parameter animated: will hide with animation if `true`
     */
-    public func hidePicker(animated: Bool) {
+    open func hidePicker(_ animated: Bool) {
         hidePickerAnimation(true)
     }
     
     // MARK: Animation
     
-    private func hidePickerAnimation(animated: Bool) {
+    fileprivate func hidePickerAnimation(_ animated: Bool) {
         delegate?.datePickerWillDisappear?(self)
         
         if animated {
-            UIView.animateWithDuration(0.2, animations: { () -> Void in
-                self.frame = CGRectOffset(self.frame, 0, self.picker.frame.size.height + self.toolbar.frame.size.height)
-            }) { (finished) -> Void in
+            UIView.animate(withDuration: 0.2, animations: { () -> Void in
+                self.frame = self.frame.offsetBy(dx: 0, dy: self.picker.frame.size.height + self.toolbar.frame.size.height)
+            }, completion: { (finished) -> Void in
                 self.delegate?.datePickerDidDisappear?(self)
-            }
+            }) 
         } else {
-            self.frame = CGRectOffset(self.frame, 0, self.picker.frame.size.height + self.toolbar.frame.size.height)
+            self.frame = self.frame.offsetBy(dx: 0, dy: self.picker.frame.size.height + self.toolbar.frame.size.height)
             delegate?.datePickerDidDisappear?(self)
         }
     }
     
-    private func showPickerAnimation(animated: Bool) {
+    fileprivate func showPickerAnimation(_ animated: Bool) {
         delegate?.datePickerWillAppear?(self)
         
         if animated {
-            self.frame = CGRectOffset(self.frame, 0, self.frame.size.height)
+            self.frame = self.frame.offsetBy(dx: 0, dy: self.frame.size.height)
             
-            UIView.animateWithDuration(0.2, animations: { () -> Void in
-                self.frame = CGRectOffset(self.frame, 0, -1 * self.frame.size.height)
-            }) { (finished) -> Void in
+            UIView.animate(withDuration: 0.2, animations: { () -> Void in
+                self.frame = self.frame.offsetBy(dx: 0, dy: -1 * self.frame.size.height)
+            }, completion: { (finished) -> Void in
                 self.delegate?.datePickerDidAppear?(self)
-            }
+            }) 
         } else {
             delegate?.datePickerDidAppear?(self)
         }
@@ -266,7 +266,7 @@ import UIKit
     /**
     Default Done action for picker. It will hide picker with animation and call's delegate datePicker(:didPickDate) method.
     */
-    public func pressedDone(sender: AnyObject) {
+    open func pressedDone(_ sender: AnyObject) {
         hidePickerAnimation(true)
         
         delegate?.datePicker?(self, didPickDate: picker.date)
@@ -275,7 +275,7 @@ import UIKit
     /**
     Default Cancel actions for picker.
     */
-    public func pressedCancel(sender: AnyObject) {
+    open func pressedCancel(_ sender: AnyObject) {
         hidePickerAnimation(true)
         
         delegate?.datePickerDidCancel?(self)
