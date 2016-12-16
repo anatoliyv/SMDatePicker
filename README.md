@@ -7,8 +7,6 @@
 
 # SMDatePicker
 
-![CocoaPods](https://img.shields.io/cocoapods/v/SMDatePicker.svg)
-
 Customizable UIDatePicker with UIToolbar. Easy to setup, use and customize. Take a look at preview:
 
 ![Preview](https://raw.githubusercontent.com/anatoliyv/SMDatePicker/master/Main/SMDatePicker.gif)
