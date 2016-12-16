@@ -1,10 +1,8 @@
-![SMDatePicker](https://cloud.githubusercontent.com/assets/1595032/15893439/631458ec-2d88-11e6-8566-4023999df805.png)
-
 [![CI Status](http://img.shields.io/travis/anatoliyv/SMDatePicker.svg?style=flat)](https://travis-ci.org/anatoliyv/SMDatePicker)
 [![Version](https://img.shields.io/cocoapods/v/SMDatePicker.svg?style=flat)](http://cocoapods.org/pods/SMDatePicker)
 [![License](https://img.shields.io/cocoapods/l/SMDatePicker.svg?style=flat)](http://cocoapods.org/pods/SMDatePicker)
 [![Platform](https://img.shields.io/cocoapods/p/SMDatePicker.svg?style=flat)](http://cocoapods.org/pods/SMDatePicker)
-![](https://img.shields.io/badge/Supported-iOS8-4BC51D.svg?style=flat)
+![](https://img.shields.io/badge/Supported-iOS9-4BC51D.svg?style=flat)
 ![](https://img.shields.io/badge/Swift 3-compatible-4BC51D.svg?style=flat)
 
 # SMDatePicker
