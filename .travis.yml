@@ -22,4 +22,4 @@ env:
   - DESTINATION='platform=iOS Simulator,name=iPhone 7 Plus'
 
 script:
-  - set -o pipefail && xcodebuild -project SMDatePicker.xcproject -scheme SMDatePicker -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO test | xcpretty
+  - set -o pipefail && xcodebuild -project SMDatePicker.xcodeproj -scheme SMDatePicker -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO test | xcpretty
