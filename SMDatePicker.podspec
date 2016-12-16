@@ -16,14 +16,14 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SMDatePicker"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "UIDatePicker with customisable UIToolbar"
 
   s.description  = <<-DESC
-                   List of swift extensions for every day usage.
+                   Customizable UIDatePicker with UIToolbar. Easy to setup, use and customize.
                    DESC
 
-  s.homepage     = "https://github.com/anatoliyv/SwiftExtensions"
+  s.homepage     = "https://github.com/anatoliyv/SMDatePicker"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -60,10 +60,10 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "8.0"
+  s.ios.deployment_target = "9.0"
   # s.osx.deployment_target = "10.7"
 
 
@@ -73,7 +73,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/anatoliyv/SMDatePicker.git", :tag => "v0.0.1" }
+  s.source       = { :git => "https://github.com/anatoliyv/SMDatePicker.git", :tag => "v0.0.3" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

@@ -1,8 +1,17 @@
+![SMDatePicker](https://cloud.githubusercontent.com/assets/1595032/15893439/631458ec-2d88-11e6-8566-4023999df805.png)
+
+[![CI Status](http://img.shields.io/travis/anatoliyv/SMDatePicker.svg?style=flat)](https://travis-ci.org/anatoliyv/SMDatePicker)
+[![Version](https://img.shields.io/cocoapods/v/SMDatePicker.svg?style=flat)](http://cocoapods.org/pods/SMDatePicker)
+[![License](https://img.shields.io/cocoapods/l/SMDatePicker.svg?style=flat)](http://cocoapods.org/pods/SMDatePicker)
+[![Platform](https://img.shields.io/cocoapods/p/SMDatePicker.svg?style=flat)](http://cocoapods.org/pods/SMDatePicker)
+![](https://img.shields.io/badge/Supported-iOS8-4BC51D.svg?style=flat)
+![](https://img.shields.io/badge/Swift 3-compatible-4BC51D.svg?style=flat)
+
 # SMDatePicker
 
 ![CocoaPods](https://img.shields.io/cocoapods/v/SMDatePicker.svg)
 
-Customisable UIDatePicker with UIToolbar. Easy to setup, use and customize. Take a look at preview:
+Customizable UIDatePicker with UIToolbar. Easy to setup, use and customize. Take a look at preview:
 
 ![Preview](https://raw.githubusercontent.com/anatoliyv/SMDatePicker/master/Main/SMDatePicker.gif)
 
@@ -31,10 +40,10 @@ You have SMDatePickerDelegate protocol to handle picker's events. Here are list:
 ```
 datePickerWillAppear(picker: SMDatePicker)
 datePickerDidAppear(picker: SMDatePicker)
-    
+
 datePicker(picker: SMDatePicker, didPickDate date: NSDate)
 datePickerDidCancel(picker: SMDatePicker)
-    
+
 datePickerWillDisappear(picker: SMDatePicker)
 datePickerDidDisappear(picker: SMDatePicker)
 ```
@@ -55,7 +64,7 @@ picker.titleColor = UIColor.whiteColor()
 var buttonOne = toolbarButton("One")
 var buttonTwo = toolbarButton("Two")
 var buttonThree = toolbarButton("Three")
-        
+
 picker.leftButtons = [ UIBarButtonItem(customView: buttonOne) ]
 picker.rightButtons = [ UIBarButtonItem(customView: buttonTwo) , UIBarButtonItem(customView: buttonThree) ]
 ```
@@ -69,7 +78,7 @@ private func toolbarButton(title: String) -> UIButton {
     button.frame = CGRectMake(0, 0, 70, 32)
     button.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.4)
     button.layer.cornerRadius = 5.0
-        
+
     return button
 }
 ```
@@ -80,26 +89,12 @@ And finaly show picker in your view:
 picker.showPickerInView(view, animated: true)
 ```
 
-### License
+## Author
 
-The MIT License (MIT)
+- anatoliy.voropay@gmail.com
+- [@anatoliy_v](https://twitter.com/anatoliy_v)
+- [LinkedIn](https://www.linkedin.com/in/anatoliyvoropay)
 
-Copyright (c) 2015 Anatoliy
+## License
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+SMDatePicker is available under the MIT license. See the LICENSE file for more info.
