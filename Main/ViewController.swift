@@ -60,7 +60,7 @@ class ViewController: UIViewController, SMDatePickerDelegate {
     
     // MARK: Actions
 
-    func button(_ sender: UIButton) {
+    @objc func button(_ sender: UIButton) {
         activePicker?.hidePicker(true)
         picker.showPickerInView(view, animated: true)
         picker.delegate = self
@@ -68,7 +68,7 @@ class ViewController: UIViewController, SMDatePickerDelegate {
         activePicker = picker
     }
     
-    func buttonColor(_ sender: UIButton) {
+    @objc func buttonColor(_ sender: UIButton) {
         activePicker?.hidePicker(true)
         
         pickerColor.toolbarBackgroundColor = UIColor.gray
@@ -79,7 +79,7 @@ class ViewController: UIViewController, SMDatePickerDelegate {
         activePicker = pickerColor
     }
     
-    func buttonToolbar(_ sender: UIButton) {
+    @objc func buttonToolbar(_ sender: UIButton) {
         activePicker?.hidePicker(true)
         
         pickerToolbar.toolbarBackgroundColor = UIColor.gray
