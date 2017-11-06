@@ -259,14 +259,14 @@ import UIKit
     // MARK: Actions
     
     /// Default Done action for picker. It will hide picker with animation and call's delegate datePicker(:didPickDate) method.
-    open func pressedDone(_ sender: AnyObject) {
+    @objc open func pressedDone(_ sender: AnyObject) {
         hidePickerAnimation(true)
         
         delegate?.datePicker?(self, didPickDate: picker.date)
     }
     
     /// Default Cancel actions for picker.
-    open func pressedCancel(_ sender: AnyObject) {
+    @objc open func pressedCancel(_ sender: AnyObject) {
         hidePickerAnimation(true)
         
         delegate?.datePickerDidCancel?(self)
