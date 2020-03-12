@@ -120,10 +120,9 @@
 			};
 			buildConfigurationList = 18477F781B07849E00690453 /* Build configuration list for PBXProject "SMDatePicker" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
