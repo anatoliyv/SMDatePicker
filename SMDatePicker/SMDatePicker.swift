@@ -35,7 +35,7 @@ import UIKit
     open var toolbarHeight: CGFloat = 44.0
     
     /// Specify different UIDatePicker mode. By default it's UIDatePickerMode.DateAndTime
-    open var pickerMode: UIDatePickerMode = UIDatePickerMode.dateAndTime {
+    open var pickerMode: UIDatePicker.Mode = UIDatePicker.Mode.dateAndTime {
         didSet { picker.datePickerMode = pickerMode }
     }
     
@@ -123,12 +123,12 @@ import UIKit
     
     fileprivate func setupDefaultButtons() {
         let doneButton = UIBarButtonItem(title: "Done",
-            style: UIBarButtonItemStyle.plain,
+            style: UIBarButtonItem.Style.plain,
             target: self,
             action: #selector(SMDatePicker.pressedDone(_:)))
 
         let cancelButton = UIBarButtonItem(title: "Cancel",
-            style: UIBarButtonItemStyle.plain,
+            style: UIBarButtonItem.Style.plain,
             target: self,
             action: #selector(SMDatePicker.pressedCancel(_:)))
         
@@ -163,15 +163,15 @@ import UIKit
         }
         
         if let title = toolbarTitle() {
-            let spaceLeft = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-            let spaceRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+            let spaceLeft = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+            let spaceRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
             let titleItem = UIBarButtonItem(customView: title)
             
             items.append(spaceLeft)
             items.append(titleItem)
             items.append(spaceRight)
         } else {
-            let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+            let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
             items.append(space)
         }
         

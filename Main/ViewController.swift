@@ -27,13 +27,13 @@ class ViewController: UIViewController, SMDatePickerDelegate {
         
         view.backgroundColor = UIColor.purple.withAlphaComponent(0.8)
         
-        button.addTarget(self, action: #selector(ViewController.button(_:)), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(ViewController.button(_:)), for: UIControl.Event.touchUpInside)
         addButton(button)
         
-        buttonColor.addTarget(self, action: #selector(ViewController.buttonColor(_:)), for: UIControlEvents.touchUpInside)
+        buttonColor.addTarget(self, action: #selector(ViewController.buttonColor(_:)), for: UIControl.Event.touchUpInside)
         addButton(buttonColor)
         
-        buttonToolbar.addTarget(self, action: #selector(ViewController.buttonToolbar(_:)), for: UIControlEvents.touchUpInside)
+        buttonToolbar.addTarget(self, action: #selector(ViewController.buttonToolbar(_:)), for: UIControl.Event.touchUpInside)
         addButton(buttonToolbar)
     }
     
@@ -50,8 +50,8 @@ class ViewController: UIViewController, SMDatePickerDelegate {
     }
     
     class func cusomButton(_ title: String) -> UIButton {
-        let button = UIButton(type: UIButtonType.custom)
-        button.setTitle(title, for: UIControlState())
+        let button = UIButton(type: UIButton.ButtonType.custom)
+        button.setTitle(title, for: UIControl.State())
         button.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         button.layer.cornerRadius = 10
         
@@ -101,8 +101,8 @@ class ViewController: UIViewController, SMDatePickerDelegate {
     }
     
     fileprivate func toolbarButton(_ title: String) -> UIButton {
-        let button = UIButton(type: UIButtonType.custom)
-        button.setTitle(title, for: UIControlState())
+        let button = UIButton(type: UIButton.ButtonType.custom)
+        button.setTitle(title, for: UIControl.State())
         button.frame = CGRect(x: 0, y: 0, width: 70, height: 32)
         button.backgroundColor = UIColor.red.withAlphaComponent(0.4)
         button.layer.cornerRadius = 5.0
@@ -114,21 +114,21 @@ class ViewController: UIViewController, SMDatePickerDelegate {
     
     func datePicker(_ picker: SMDatePicker, didPickDate date: Date) {
         if picker == self.picker {
-            button.setTitle(date.description, for: UIControlState())
+            button.setTitle(date.description, for: UIControl.State())
         } else if picker == self.pickerColor {
-            buttonColor.setTitle(date.description, for: UIControlState())
+            buttonColor.setTitle(date.description, for: UIControl.State())
         } else if picker == self.pickerToolbar {
-            buttonToolbar.setTitle(date.description, for: UIControlState())
+            buttonToolbar.setTitle(date.description, for: UIControl.State())
         }
     }
     
     func datePickerDidCancel(_ picker: SMDatePicker) {
         if picker == self.picker {
-            button.setTitle("Default picker", for: UIControlState())
+            button.setTitle("Default picker", for: UIControl.State())
         } else if picker == self.pickerColor {
-            buttonColor.setTitle("Custom colors", for: UIControlState())
+            buttonColor.setTitle("Custom colors", for: UIControl.State())
         } else if picker == self.pickerToolbar {
-            buttonToolbar.setTitle("Toolbar customization", for: UIControlState())
+            buttonToolbar.setTitle("Toolbar customization", for: UIControl.State())
         }
     }
 
